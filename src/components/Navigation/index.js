@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
@@ -19,36 +20,41 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
+
+  <Nav>
+    <NavLink><Link to={ROUTES.LANDING}>Landing</Link></NavLink>
+  <NavItem>
+    <NavLink><Link to={ROUTES.LANDING}>Landing</Link></NavLink>
+</NavItem>
+<NavItem>
+  <NavLink><Link to={ROUTES.HOME}>Home</Link></NavLink>
+</NavItem>
+<NavItem>
+  <NavLink><Link to={ROUTES.ACCOUNT}>Account</Link></NavLink>
+</NavItem>
     {!!authUser.roles[ROLES.ADMIN] && (
-      <li>
-        <Link to={ROUTES.ADMIN}>Admin</Link>
-      </li>
+<NavItem>
+
+  <NavLink><Link to={ROUTES.ADMIN}>Admin</Link></NavLink>
+
+</NavItem>
     )}
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+    <NavItem>
+      <NavLink><SignOutButton /></NavLink>
+    </NavItem>
+</Nav>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+  <Nav>
+    <NavItem>
+      <NavLink><Link to={ROUTES.LANDING}>Landing</Link></NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink><Link to={ROUTES.SIGN_IN}>Sign In</Link></NavLink>
+    </NavItem>
+  </Nav>
 );
+
 
 export default Navigation;

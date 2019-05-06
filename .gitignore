@@ -21,7 +21,6 @@
 .env.test.local
 .env.production.local
 
-/src/components/firebase
 
 # log
 npm-debug.log*
