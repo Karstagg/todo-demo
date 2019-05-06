@@ -9,7 +9,7 @@ const MessageList = ({
   onEditTitle,
   onRemoveMessage,
 }) => (
-  <ul>
+  <div>
     {messages.map(message => (
       <MessageItem
         authUser={authUser}
@@ -20,7 +20,7 @@ const MessageList = ({
         onRemoveMessage={onRemoveMessage}
       />
     ))}
-  </ul>
+  </div>
 );
 
 export default MessageList;

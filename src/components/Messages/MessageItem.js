@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 
 class MessageItem extends Component {
   constructor(props) {
@@ -40,50 +41,37 @@ class MessageItem extends Component {
 
 
       return (
-        <li>
-          {editMode ? (
-            <div>
-              <input
-                type="text"
-                value={editTitle}
-                onChange={this.onChangeEditTitle}
-              />
-              <input
-                type="text"
-                value={editText}
-                onChange={this.onChangeEditText}
-              />
-            </div>
+       <div>
+            <Row>
+              <Col sm="8">
+                <Card body>
+                  {!editMode ? <div><CardTitle>{message.title}</CardTitle> <CardText>{message.text}</CardText></div> :
+                    <div>
+                      <CardTitle>
+                        <input
+                          type="text"
+                          value={editTitle}
+                          onChange={this.onChangeEditTitle}
+                        />
+                      </CardTitle>
+                      <CardText>
+                        <input
+                          type="text"
+                          value={editText}
+                          onChange={this.onChangeEditText}
+                        />
+                      </CardText>
+                    </div>
+                  }
 
-          ) : (
-            <span>
-             {message.title + " " + message.text}
-              {<span>(Last edited at {message.editedAt ? new Date(message.editedAt).toString() : new Date(message.createdAt).toString()})</span>}
-          </span>
-          )}
-
-          {authUser.uid === message.userId && (
-            <span>
-            {editMode ? (
-              <span>
-                <button onClick={this.onSaveEditText}>Save</button>
-                <button onClick={this.onToggleEditMode}>Reset</button>
-              </span>
-            ) : (
-              <button onClick={this.onToggleEditMode}>Edit</button>
-            )}
-
-              {!editMode && (
-                <button
-                  type="button"
-                  onClick={() => onRemoveMessage(message.uid)}
-                >
-                  Delete
-                </button>
-              )}
-          </span>
-          )}
-        </li>
+                  <CardText>(Last edited at {message.editedAt ? new Date(message.editedAt).toString() : new Date(message.createdAt).toString()})</CardText>
+                  {!editMode ? <div ><Button color="primary" onClick={this.onToggleEditMode}>Edit</Button><Button color="danger" onClick={() => onRemoveMessage(message.uid)}>Delete</Button></div> :
+                    <div><Button color="primary" onClick={this.onSaveEditText}>Save</Button><Button onClick={this.onToggleEditMode}>Reset</Button></div>
+                  }
+                </Card>
+              </Col>
+            </Row>
+       </div>
       );
     } else {
       return(
