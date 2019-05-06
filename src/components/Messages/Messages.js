@@ -11,6 +11,7 @@ class Messages extends Component {
     super(props);
 
     this.state = {
+      title: '',
       text: '',
       loading: false,
       messages: [],
@@ -67,24 +68,29 @@ class Messages extends Component {
   onChangeText = event => {
     this.setState({ text: event.target.value });
   };
+  onChangeTitle = event => {
+    this.setState({ title: event.target.value });
+  };
 
   onCreateMessage = (event, authUser) => {
     this.props.firebase.messages().push({
+      title: this.state.title,
       text: this.state.text,
       userId: authUser.uid,
       createdAt: this.props.firebase.serverValue.TIMESTAMP,
     });
 
-    this.setState({ text: '' });
+
+    this.setState({ title: '', text: '' });
 
     event.preventDefault();
   };
 
-  onEditMessage = (message, text) => {
+  onEditMessage = (message, title, text) => {
     const { uid, ...messageSnapshot } = message;
-
     this.props.firebase.message(message.uid).set({
       ...messageSnapshot,
+      title,
       text,
       editedAt: this.props.firebase.serverValue.TIMESTAMP,
     });
@@ -102,7 +108,7 @@ class Messages extends Component {
   };
 
   render() {
-    const { text, messages, loading } = this.state;
+    const {title, text, messages, loading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
@@ -132,6 +138,11 @@ class Messages extends Component {
                 this.onCreateMessage(event, authUser)
               }
             >
+              <input
+                type="text"
+                value={title}
+                onChange={this.onChangeTitle}
+              />
               <input
                 type="text"
                 value={text}

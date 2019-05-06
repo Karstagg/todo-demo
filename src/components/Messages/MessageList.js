@@ -6,6 +6,7 @@ const MessageList = ({
   authUser,
   messages,
   onEditMessage,
+  onEditTitle,
   onRemoveMessage,
 }) => (
   <ul>
@@ -15,6 +16,7 @@ const MessageList = ({
         key={message.uid}
         message={message}
         onEditMessage={onEditMessage}
+        onEditTitle={onEditTitle}
         onRemoveMessage={onRemoveMessage}
       />
     ))}
