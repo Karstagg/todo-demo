@@ -5,7 +5,7 @@ import React from 'react';
 export const NavigationNonAuth = () => (
   <Nav>
     <NavItem>
-      <NavLink href={ROUTES.LANDING}>Landing</NavLink>
+      <NavLink href={ROUTES.LANDING}>Landing Page</NavLink>
     </NavItem>
     <NavItem>
       <NavLink href={ROUTES.SIGN_IN}>Sign In</NavLink>

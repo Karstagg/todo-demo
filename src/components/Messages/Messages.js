@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import MessageList from './MessageList';
-import { Button, Col, Card, CardText, CardTitle , Row} from 'reactstrap';
+import { Button, Col, Card, Row} from 'reactstrap';
 
 class Messages extends Component {
   _initFirebase = false;

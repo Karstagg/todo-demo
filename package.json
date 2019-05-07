@@ -2,7 +2,7 @@
   "name": "react-gastby-firebase-authentication",
   "description": "Gatsby hello world starter",
   "scripts": {
-    "deploy:github": "npm run build && node ./scripts/deploy-github",
+    "deploy": "gatsby build && gh-pages -d public -b master",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "build": "gatsby build",
@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "firebase": "^5.6.0",
+    "firebase": "5.6.0",
     "gatsby": "^2.0.33",
     "github-pages": "^3.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "reactstrap": "^8.0.0",
     "recompose": "^0.30.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }

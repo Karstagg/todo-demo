@@ -5,11 +5,10 @@ import Layout from '../components/layout';
 
 const LandingPage = () => (
   <Fragment>
-    <h1>Landing</h1>
+    <h1>Demo Todo App</h1>
 
     <p>
-      The Landing Page is open to everyone, even though the user isn't
-      signed in.
+     This is a demo todo app built by Mattew Fisher using Gatsby.js/react and Firebase.
     </p>
   </Fragment>
 );
