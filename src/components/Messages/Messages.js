@@ -142,7 +142,19 @@ class Messages extends Component {
                 value={text}
                 onChange={this.onChangeText}
               />
-              <button type="submit">Send</button>
+              <Row>
+              <Button color="primary" type="submit">Add</Button>
+              {!loading && messages && (
+                <div>
+                  <Button onClick={this.onNextPage}>
+                    More
+                  </Button>
+                  <Button onClick={this.onReverseOrder}>
+                    reverse order
+                  </Button>
+                </div>
+              )}
+              </Row>
             </form>
 
             {loading && <div>Loading ...</div>}
@@ -155,16 +167,6 @@ class Messages extends Component {
                 onEditMessage={this.onEditMessage}
                 onRemoveMessage={this.onRemoveMessage}
               />
-            )}
-            {!loading && messages && (
-              <div>
-                <Button onClick={this.onNextPage}>
-                  More
-                </Button>
-                <Button onClick={this.onReverseOrder}>
-                  reverse order
-                </Button>
-              </div>
             )}
 
             {!messages && <div>There are no messages ...</div>}
