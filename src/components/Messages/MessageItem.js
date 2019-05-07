@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 
 class MessageItem extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class MessageItem extends Component {
     this.state = {
       editMode: false,
       editText: this.props.message.text,
-      editTitle: this.props.message.title
+      editTitle: this.props.message.title,
     };
   }
 
@@ -16,7 +16,7 @@ class MessageItem extends Component {
     this.setState(state => ({
       editMode: !state.editMode,
       editText: this.props.message.text,
-      editTitle: this.props.message.title
+      editTitle: this.props.message.title,
     }));
   };
 
@@ -37,46 +37,50 @@ class MessageItem extends Component {
     const { authUser, message, onRemoveMessage } = this.props;
     const { editMode, editText, editTitle } = this.state;
 
-    if(authUser.uid === message.userId) {
+    if (authUser.uid === message.userId) {
 
 
       return (
-       <div>
-            <Row>
-              <Col sm="8">
-                <Card body>
-                  {!editMode ? <div><CardTitle>{message.title}</CardTitle> <CardText>{message.text}</CardText></div> :
-                    <div>
-                      <CardTitle>
-                        <input
-                          type="text"
-                          value={editTitle}
-                          onChange={this.onChangeEditTitle}
-                        />
-                      </CardTitle>
-                      <CardText>
-                        <input
-                          type="text"
-                          value={editText}
-                          onChange={this.onChangeEditText}
-                        />
-                      </CardText>
-                    </div>
-                  }
+        <div>
+          <Row>
+            <Card body>
+              {!editMode ? <div><CardTitle>{message.title}</CardTitle> <CardText>{message.text}</CardText></div> :
+                <div>
+                  <CardTitle>
+                    <input
+                      type="text"
+                      value={editTitle}
+                      onChange={this.onChangeEditTitle}
+                    />
+                  </CardTitle>
+                  <CardText>
+                    <textarea
+                      style={{width: "100%"}}
+                      value={editText}
+                      onChange={this.onChangeEditText}
+                    />
+                  </CardText>
+                </div>
+              }
 
-                  <CardText>(Last edited at {message.editedAt ? new Date(message.editedAt).toString() : new Date(message.createdAt).toString()})</CardText>
-                  {!editMode ? <div ><Button color="primary" onClick={this.onToggleEditMode}>Edit</Button><Button color="danger" onClick={() => onRemoveMessage(message.uid)}>Delete</Button></div> :
-                    <div><Button color="primary" onClick={this.onSaveEditText}>Save</Button><Button onClick={this.onToggleEditMode}>Reset</Button></div>
-                  }
-                </Card>
-              </Col>
-            </Row>
-       </div>
+              <CardText>(Last edited
+                at {message.editedAt ? new Date(message.editedAt).toString() : new Date(message.createdAt).toString()})</CardText>
+              {!editMode ?
+                <div><Button color="primary" onClick={this.onToggleEditMode}>Edit</Button><Button color="danger"
+                                                                                                  onClick={() => onRemoveMessage(message.uid)}>Delete</Button>
+                </div> :
+                <div><Button color="primary" onClick={this.onSaveEditText}>Save</Button><Button
+                  onClick={this.onToggleEditMode}>Reset</Button></div>
+              }
+            </Card>
+
+          </Row>
+        </div>
       );
     } else {
-      return(
+      return (
         null
-      )
+      );
     }
   }
 }

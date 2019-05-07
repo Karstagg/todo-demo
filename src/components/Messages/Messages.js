@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import MessageList from './MessageList';
+import { Button, Col, Card, CardText, CardTitle , Row} from 'reactstrap';
 
 class Messages extends Component {
   _initFirebase = false;
@@ -15,7 +16,7 @@ class Messages extends Component {
       text: '',
       loading: false,
       messages: [],
-      limit: 5,
+      limit: 20,
     };
   }
 
@@ -102,8 +103,13 @@ class Messages extends Component {
 
   onNextPage = () => {
     this.setState(
-      state => ({ limit: state.limit + 5 }),
+      state => ({ limit: state.limit + 20 }),
       this.onListenForMessages,
+    );
+  };
+  onReverseOrder = () => {
+    this.setState(
+      state => ({ messages: state.messages.reverse()}),
     );
   };
 
@@ -113,15 +119,35 @@ class Messages extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div>
-            {!loading && messages && (
-              <button type="button" onClick={this.onNextPage}>
-                More
-              </button>
-            )}
+
+          <Col md={{size: 10, offset: 1}} >
+           <Row>
+
+            <Card body>
+              <h1>Add A Todo Item</h1>
+            <form
+              onSubmit={event =>
+                this.onCreateMessage(event, authUser)
+              }
+            >
+              <div>Title</div>
+              <input
+                type="text"
+                value={title}
+                onChange={this.onChangeTitle}
+              />
+              <div>Text</div>
+              <textarea
+                style={{width: "100%"}}
+                value={text}
+                onChange={this.onChangeText}
+              />
+              <button type="submit">Send</button>
+            </form>
 
             {loading && <div>Loading ...</div>}
-
+            </Card>
+           </Row>
             {messages && (
               <MessageList
                 authUser={authUser}
@@ -130,27 +156,21 @@ class Messages extends Component {
                 onRemoveMessage={this.onRemoveMessage}
               />
             )}
+            {!loading && messages && (
+              <div>
+                <Button onClick={this.onNextPage}>
+                  More
+                </Button>
+                <Button onClick={this.onReverseOrder}>
+                  reverse order
+                </Button>
+              </div>
+            )}
 
             {!messages && <div>There are no messages ...</div>}
 
-            <form
-              onSubmit={event =>
-                this.onCreateMessage(event, authUser)
-              }
-            >
-              <input
-                type="text"
-                value={title}
-                onChange={this.onChangeTitle}
-              />
-              <input
-                type="text"
-                value={text}
-                onChange={this.onChangeText}
-              />
-              <button type="submit">Send</button>
-            </form>
-          </div>
+
+          </Col>
         )}
       </AuthUserContext.Consumer>
     );

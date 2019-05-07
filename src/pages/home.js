@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'recompose';
+import {Row} from 'reactstrap';
 
 import Layout from '../components/layout';
 import {
@@ -9,12 +10,9 @@ import {
 import Messages from '../components/Messages';
 
 const HomePageBase = () => (
-  <div>
-    <h1>Home Page</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
-
+  <Row>
     <Messages />
-  </div>
+  </Row>
 );
 
 const condition = authUser => !!authUser;
