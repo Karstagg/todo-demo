@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { compose } from 'recompose';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../components/layout';
 import {
   withAuthorization,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 import {Row} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Layout from '../components/layout';
 import {

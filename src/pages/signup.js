@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../components/layout';
 import SignUpForm from '../components/SignUp';
 
