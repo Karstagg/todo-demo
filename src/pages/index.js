@@ -8,7 +8,7 @@ const LandingPage = () => (
     <h1>Demo Todo App</h1>
 
     <p>
-     This is a demo todo app built by Mattew Fisher using Gatsby.js/react and Firebase.
+     This is a demo todo app built by Matthew Fisher using Gatsby.js/react and Firebase.
     </p>
   </Fragment>
 );

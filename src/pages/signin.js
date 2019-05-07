@@ -14,8 +14,6 @@ const SignInPage = () => (
     <h1>SignIn</h1>
     <SignInForm />
     <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
     <PasswordForgetLink />
     <SignUpLink />
   </Fragment>
