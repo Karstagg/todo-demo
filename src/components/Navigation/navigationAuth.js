@@ -5,12 +5,9 @@ import React from 'react';
 
 export const NavigationAuth = ({ authUser }) => (
 
-  <Nav >
+  <Nav>
     <NavItem>
-      <NavLink href={ROUTES.HOME}>Home</NavLink>
-    </NavItem>
-    <NavItem>
-      <NavLink><SignOutButton /></NavLink>
+      <SignOutButton />
     </NavItem>
   </Nav>
 );
