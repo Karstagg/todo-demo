@@ -61,10 +61,10 @@
           <entry key="development" value="17" />
           <entry key="env" value="124" />
           <entry key="gitignore" value="31" />
-          <entry key="js" value="4801" />
+          <entry key="js" value="4824" />
           <entry key="json" value="11" />
           <entry key="md" value="147" />
-          <entry key="txt" value="317" />
+          <entry key="txt" value="334" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -72,8 +72,8 @@
           <entry key=".env file" value="141" />
           <entry key="CSS" value="1279" />
           <entry key="JSON" value="11" />
-          <entry key="JavaScript" value="4801" />
-          <entry key="PLAIN_TEXT" value="495" />
+          <entry key="JavaScript" value="4824" />
+          <entry key="PLAIN_TEXT" value="512" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -111,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="21" column="107" selection-start-line="21" selection-start-column="107" selection-end-line="21" selection-end-column="107" />
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -296,8 +296,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="317" />
-    <option name="y" value="74" />
+    <option name="x" value="113" />
+    <option name="y" value="81" />
     <option name="width" value="1680" />
     <option name="height" value="976" />
   </component>
@@ -318,6 +318,12 @@
               <item name="todo-demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="todo-demo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="todo-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="todo-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -473,7 +479,7 @@
       <updated>1557029851082</updated>
       <workItem from="1557029852509" duration="2588000" />
       <workItem from="1557138826839" duration="4352000" />
-      <workItem from="1557143831684" duration="51472000" />
+      <workItem from="1557143831684" duration="51666000" />
     </task>
     <task id="LOCAL-00001" summary="initial boiler plate for firebase auth">
       <created>1557144011220</created>
@@ -580,11 +586,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557307667413</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="trying to fix css">
+      <created>1557307960730</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1557307960730</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58412000" />
+    <option name="totallyTimeSpent" value="58606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -596,7 +609,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="317" y="74" width="1680" height="976" extended-state="0" />
+    <frame x="113" y="81" width="1680" height="976" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
@@ -656,11 +669,11 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="styling landing page" />
     <MESSAGE value="styling sign in page" />
-    <MESSAGE value="trying to fix css" />
     <MESSAGE value="styling signup" />
     <MESSAGE value="styling todo list" />
     <MESSAGE value="styled todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="styled todo list" />
+    <MESSAGE value="trying to fix css" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to fix css" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.env.development" />
@@ -934,7 +947,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="21" column="107" selection-start-line="21" selection-start-column="107" selection-end-line="21" selection-end-column="107" />
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
