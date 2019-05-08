@@ -120,61 +120,65 @@ class Messages extends Component {
       <AuthUserContext.Consumer>
         {authUser => (
           <Container>
-              <Card className='main-card' body>
-                <CardTitle style={{ paddingBottom: 10 }}><h1>Add A To do Item</h1></CardTitle>
-                <form
-                  onSubmit={event =>
-                    this.onCreateMessage(event, authUser)
-                  }
-                >
-                  <Row>
-                    <Col md='2'>
-                      <CardTitle>Title</CardTitle>
-                      <input
-                        style={{ width: '100%' }}
-                        type="text"
-                        value={title}
-                        onChange={this.onChangeTitle}
-                      />
-                    </Col>
-                    <Col md='10'>
-                      <CardTitle>Text</CardTitle>
-                      <textarea
-                        style={{ width: '100%', minHeight: 100, maxHeight: 100 }}
-                        value={text}
-                        onChange={this.onChangeText}
-                      />
-                    </Col>
-                  </Row>
+            <Card className='main-card' body>
+              <CardTitle style={{ paddingBottom: 10 }}><h1>Add A To do Item</h1></CardTitle>
+              <form
+                onSubmit={event =>
+                  this.onCreateMessage(event, authUser)
+                }
+              >
+                <Row>
+                  <Col md='2'>
+                    <CardTitle>Title</CardTitle>
+                    <input
+                      style={{ width: '100%' }}
+                      type="text"
+                      value={title}
+                      onChange={this.onChangeTitle}
+                    />
+                  </Col>
+                  <Col md='10'>
+                    <CardTitle>Text</CardTitle>
+                    <textarea
+                      style={{ width: '100%', minHeight: 100, maxHeight: 100 }}
+                      value={text}
+                      onChange={this.onChangeText}
+                    />
+                  </Col>
+                </Row>
 
-                    {!loading && messages ? (
-                      <Row md={{offset: 2}}>
-                        <Col md='3'>
-                          <Button color="primary" type="submit">Add</Button>
-                        </Col>
-                        <Col md='3'>
+                {!loading && messages ? (
+                  <Container>
+                    <Row>
+                      <Col md='4'>
+                        <CardTitle><Button color="primary" type="submit">Add</Button></CardTitle>
+                      </Col>
+                      <Col md='4'>
+                        <CardTitle>
                           <Button onClick={this.onNextPage}>
                             More
                           </Button>
-                        </Col>
+                        </CardTitle>
+                      </Col>
 
-                        <Col md='3'>
+                      <Col md='4'>
+                        <CardTitle>
                           <Button onClick={this.onReverseOrder}>
                             reverse order
                           </Button>
-                        </Col>
+                        </CardTitle>
+                      </Col>
+                    </Row>
+                  </Container>
+                ) : <Col md='4'>
+                  <Button color="primary" type="submit">Add</Button>
+                </Col>}
 
-                      </Row>
-                    ) : <Col md='3'>
-                      <Button color="primary" type="submit">Add</Button>
-                    </Col>}
 
+              </form>
 
-
-                </form>
-
-                {loading && <div>Loading ...</div>}
-              </Card>
+              {loading && <div>Loading ...</div>}
+            </Card>
 
             {messages && (
               <MessageList

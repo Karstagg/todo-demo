@@ -2,6 +2,7 @@ import React from 'react';
 
 import MessageItem from './MessageItem';
 
+
 const MessageList = ({
   authUser,
   messages,
@@ -10,8 +11,9 @@ const MessageList = ({
   onRemoveMessage,
 }) => (
   <div>
-    {messages.map(message => (
+    {messages.map((message, index) => (
       <MessageItem
+        type={index}
         authUser={authUser}
         key={message.uid}
         message={message}

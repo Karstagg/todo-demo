@@ -29,6 +29,11 @@
 .sub-card {
   height: 100%;
   background-color: #6c757d;
+  color: white;
+}
+.sub-card2 {
+  height: 100%;
+  background-color: white;
   color: black;
 }
 a {
@@ -55,4 +60,7 @@ form button {
 }
 .sign-up-form button{
   margin-top: 15%;
+}
+.btn:focus{
+  box-shadow: none !important;
 }
