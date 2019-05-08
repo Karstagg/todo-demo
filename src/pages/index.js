@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Container, Col, Card, CardTitle, CardText, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'gatsby'
-import main from './main.css'
+import './main.css'
 
 import Layout from '../components/layout';
 
