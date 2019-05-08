@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { navigate } from 'gatsby';
-
+import { Button, Container, Row, Col } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+
 
 const INITIAL_STATE = {
   email: '',
@@ -53,27 +54,42 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <Container>
+        <Col md="12">
+          <form onSubmit={this.onSubmit}>
+            <Row>
+              <Col md='6'>
+                <Row>
+                  <input
+                    name="email"
+                    value={email}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Email Address"
+                  />
+                </Row>
+                <Row>
+                  <input
+                    name="password"
+                    value={password}
+                    onChange={this.onChange}
+                    type="password"
+                    placeholder="Password"
+                  />
+                </Row>
+              </Col>
+              <Col className='col-md-4'>
+                <Button color='primary' disabled={isInvalid} type="submit">
+                  Sign In
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              {error && <p>{error.message}</p>}
+            </Row>
+          </form>
+        </Col>
+      </Container>
     );
   }
 }
@@ -115,11 +131,14 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <Container>
+        <Col md="12">
+          <form onSubmit={this.onSubmit}>
+            <Button color='primary' type="submit">Sign In with Google</Button>
+            {error && <p>{error.message}</p>}
+          </form>
+        </Col>
+      </Container>
     );
   }
 }

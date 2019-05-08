@@ -8,19 +8,43 @@ import SignInForm, {
 } from '../components/SignIn';
 import { SignUpLink } from '../components/SignUp';
 import { PasswordForgetLink } from '../components/PasswordForget';
+import { Button, Card, CardText, CardTitle, Col, Container, Row } from 'reactstrap';
+import { Link } from 'gatsby';
+import main from './main.css';
 
 const SignInPage = () => (
   <Fragment>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <SignInGoogle />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <Container>
+
+
+          <Card body className='main-card'>
+            <CardTitle><h2>Sign In</h2></CardTitle>
+            <Row>
+
+            <Col md="6">
+              <Card className='sub-card'>
+                <CardText><SignInForm/></CardText>
+              </Card>
+            </Col>
+            <Col className='col-md-6'>
+              <Card className='sub-card'>
+                <CardText><SignInGoogle/></CardText>
+              </Card>
+            </Col>
+              <Col md='12'>
+              <CardText><PasswordForgetLink/></CardText>
+              <CardText><SignUpLink/></CardText>
+              </Col>
+            </Row>
+          </Card>
+
+
+    </Container>
   </Fragment>
 );
 
 export default () => (
   <Layout>
-    <SignInPage />
+    <SignInPage/>
   </Layout>
 );
