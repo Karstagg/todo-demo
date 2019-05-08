@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, navigate } from 'gatsby';
-
+import { Button, Col, Container, Row } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -92,42 +92,60 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <Container>
+        <form className='sign-up-form' onSubmit={this.onSubmit}>
+          <Row>
+            <Col md='6'>
+              <Row>
+                <input
+                  name="username"
+                  value={username}
+                  onChange={this.onChange}
+                  type="text"
+                  placeholder="Full Name"
+                />
+              </Row>
+              <Row>
+                <input
+                  name="email"
+                  value={email}
+                  onChange={this.onChange}
+                  type="text"
+                  placeholder="Email Address"
+                />
+              </Row>
+              <Row>
+                <input
+                  name="passwordOne"
+                  value={passwordOne}
+                  onChange={this.onChange}
+                  type="password"
+                  placeholder="Password"
+                />
+              </Row>
+              <Row>
+                <input
+                  name="passwordTwo"
+                  value={passwordTwo}
+                  onChange={this.onChange}
+                  type="password"
+                  placeholder="Confirm Password"
+                />
+              </Row>
+            </Col>
+            <Col md='5'>
+              <Button color='primary' disabled={isInvalid} type="submit">
+                Sign Up
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col md='12'>
+              {error && <p>{error.message}</p>}
+            </Col>
+          </Row>
+        </form>
+      </Container>
     );
   }
 }
