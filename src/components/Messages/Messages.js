@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import MessageList from './MessageList';
-import { Button, Col, Card, Row} from 'reactstrap';
+import { Button, Col, Card, Row, CardTitle, Container } from 'reactstrap';
 
 class Messages extends Component {
   _initFirebase = false;
@@ -109,57 +109,73 @@ class Messages extends Component {
   };
   onReverseOrder = () => {
     this.setState(
-      state => ({ messages: state.messages.reverse()}),
+      state => ({ messages: state.messages.reverse() }),
     );
   };
 
   render() {
-    const {title, text, messages, loading } = this.state;
+    const { title, text, messages, loading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
         {authUser => (
+          <Container>
+              <Card className='main-card' body>
+                <CardTitle style={{ paddingBottom: 10 }}><h1>Add A To do Item</h1></CardTitle>
+                <form
+                  onSubmit={event =>
+                    this.onCreateMessage(event, authUser)
+                  }
+                >
+                  <Row>
+                    <Col md='2'>
+                      <CardTitle>Title</CardTitle>
+                      <input
+                        style={{ width: '100%' }}
+                        type="text"
+                        value={title}
+                        onChange={this.onChangeTitle}
+                      />
+                    </Col>
+                    <Col md='10'>
+                      <CardTitle>Text</CardTitle>
+                      <textarea
+                        style={{ width: '100%', minHeight: 100, maxHeight: 100 }}
+                        value={text}
+                        onChange={this.onChangeText}
+                      />
+                    </Col>
+                  </Row>
 
-          <Col md={{size: 10, offset: 1}} >
-           <Row>
+                    {!loading && messages ? (
+                      <Row md={{offset: 2}}>
+                        <Col md='3'>
+                          <Button color="primary" type="submit">Add</Button>
+                        </Col>
+                        <Col md='3'>
+                          <Button onClick={this.onNextPage}>
+                            More
+                          </Button>
+                        </Col>
 
-            <Card body>
-              <h1>Add A Todo Item</h1>
-            <form
-              onSubmit={event =>
-                this.onCreateMessage(event, authUser)
-              }
-            >
-              <div>Title</div>
-              <input
-                type="text"
-                value={title}
-                onChange={this.onChangeTitle}
-              />
-              <div>Text</div>
-              <textarea
-                style={{width: "100%"}}
-                value={text}
-                onChange={this.onChangeText}
-              />
-              <Row>
-              <Button color="primary" type="submit">Add</Button>
-              {!loading && messages && (
-                <div>
-                  <Button onClick={this.onNextPage}>
-                    More
-                  </Button>
-                  <Button onClick={this.onReverseOrder}>
-                    reverse order
-                  </Button>
-                </div>
-              )}
-              </Row>
-            </form>
+                        <Col md='3'>
+                          <Button onClick={this.onReverseOrder}>
+                            reverse order
+                          </Button>
+                        </Col>
 
-            {loading && <div>Loading ...</div>}
-            </Card>
-           </Row>
+                      </Row>
+                    ) : <Col md='3'>
+                      <Button color="primary" type="submit">Add</Button>
+                    </Col>}
+
+
+
+                </form>
+
+                {loading && <div>Loading ...</div>}
+              </Card>
+
             {messages && (
               <MessageList
                 authUser={authUser}
@@ -172,7 +188,7 @@ class Messages extends Component {
             {!messages && <div>There are no messages ...</div>}
 
 
-          </Col>
+          </Container>
         )}
       </AuthUserContext.Consumer>
     );
